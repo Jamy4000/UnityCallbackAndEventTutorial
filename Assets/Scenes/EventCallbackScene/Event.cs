@@ -14,19 +14,19 @@ namespace EventCallbacks
         public string Description;
         
         public delegate void EventListener(T info);
-        private static event EventListener events;
+        private static event EventListener listeners;
         
         public static void RegisterListener(EventListener listener) {
-            events += listener;
+            listeners += listener;
         }
 
         public static void UnregisterListener(EventListener listener) {
-            events -= listener;
+            listeners -= listener;
         }
 
         public void FireEvent() {
-            if (events != null) {
-                events(this as T);
+            if (listeners != null) {
+                listeners(this as T);
             }
         }
     }
