@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace EventCallbacks
+namespace EventCallbacks.Quill
 {
     public abstract class EventSystem<T>
     {
@@ -27,9 +27,9 @@ namespace EventCallbacks
         }
     }
 
-    public class DebugEvent : EventSystem<DebugEvent>
+    public class DebugEventSystem : EventSystem<DebugEventSystem>
     {
-        public DebugEvent(int verbosityLevel) : base("Debug event.")
+        public DebugEventSystem(int verbosityLevel) : base("Debug event.")
         {
             VerbosityLevel = verbosityLevel;
             FireEvent(this);
@@ -38,9 +38,9 @@ namespace EventCallbacks
         public readonly int VerbosityLevel;
     }
 
-    public class UnitDeathEvent : EventSystem<UnitDeathEvent>
+    public class UnitDeathEventSystem : EventSystem<UnitDeathEventSystem>
     {
-        public UnitDeathEvent(GameObject go) : base("Unit death event.")
+        public UnitDeathEventSystem(GameObject go) : base("Unit death event.")
         {
             UnitGO = go;
             FireEvent(this);

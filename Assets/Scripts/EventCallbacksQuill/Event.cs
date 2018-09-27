@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace EventCallbacks
+namespace EventCallbacks.Quill
 {
     public abstract class Event<T> where T : Event<T> {
         /*
@@ -13,14 +13,14 @@ namespace EventCallbacks
 
         private bool hasFired;
         public delegate void EventListener(T info);
-        private static event EventListener listeners;
+        public static event EventListener Listeners;
         
         public static void RegisterListener(EventListener listener) {
-            listeners += listener;
+            Listeners += listener;
         }
 
         public static void UnregisterListener(EventListener listener) {
-            listeners -= listener;
+            Listeners -= listener;
         }
 
         public void FireEvent() {
@@ -28,8 +28,8 @@ namespace EventCallbacks
                 throw new Exception("This event has already fired, to prevent infinite loops you can't refire an event");
             }
             hasFired = true;
-            if (listeners != null) {
-                listeners(this as T);
+            if (Listeners != null) {
+                Listeners(this as T);
             }
         }
     }
