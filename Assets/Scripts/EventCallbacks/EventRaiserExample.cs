@@ -30,6 +30,11 @@ namespace EventCallbacks
             var vector3Param = new Vector3(Random.Range(0, 100), Random.Range(0, 100), Random.Range(0, 100));
             var floatParam = Random.Range(0, 100);
 
+            // What you shouldn't do : 
+            // var test = new EventExample(vector3Param, floatParam);
+            // test.FireEvent(test);
+
+            // What you should do : 
             new EventExample(vector3Param, floatParam);
 
             yield return new WaitForSeconds(1.5f);
