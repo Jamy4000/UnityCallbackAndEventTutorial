@@ -1,5 +1,11 @@
 ﻿namespace EventCallbacks
 {
+    /// <summary>
+    /// Base class for the event callback system. Extend this class to create a new event to raise and listen.
+    /// For a simple example, check the Github Repository at this adress :
+    /// https://github.com/Jamy4000/UnityCallbackAndEventTutorial
+    /// </summary>
+    /// <typeparam name="T">The new Event you've created and that extend this class</typeparam>
     public class Event<T> where T : Event<T>
     {
         /// <summary>
