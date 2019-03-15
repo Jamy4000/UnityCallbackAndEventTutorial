@@ -16,14 +16,7 @@
         /// <summary>
         /// The event, working kind of like a list, that contains all the methods to call when the event is fired
         /// </summary>
-        private static event EventListener _listeners;
-
-        /// <summary>
-        /// Security to avoid an event to be raised multiple times.
-        /// If you want to raise the same event several times, you need to call the constructor each time
-        /// the event must be raised.
-        /// </summary>
-        private bool _hasFired;
+        public static event EventListener Listeners;
 
         /// <summary>
         /// Base constructor for the Event class
@@ -41,7 +34,7 @@
         /// <param name="listener">The method that need to be added to the listeners</param>
         public static void RegisterListener(EventListener listener)
         {
-            _listeners += listener;
+            Listeners += listener;
         }
 
         /// <summary>
@@ -51,7 +44,7 @@
         /// <param name="listener">The method that need to be removed from the listeners</param>
         public static void UnregisterListener(EventListener listener)
         {
-            _listeners -= listener;
+            Listeners -= listener;
         }
 
         /// <summary>
@@ -60,15 +53,7 @@
         /// <param name="info">The reference to the event. Can be FireEvent(this) if you call it from the Constructor of your event.</param>
         public void FireEvent(T info)
         {
-            if (_hasFired)
-            {
-                throw new EventException($"The event { this.GetType().ToString() } has already fired, to prevent infinite loops you can't refire an event");
-            }
-            else
-            {
-                _hasFired = true;
-                _listeners?.Invoke(info);
-            }
+            Listeners?.Invoke(info);
         }
     }
 }

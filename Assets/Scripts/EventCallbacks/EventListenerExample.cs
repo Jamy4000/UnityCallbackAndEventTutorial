@@ -9,16 +9,22 @@ namespace EventCallbacks
     public class EventListenerExample : MonoBehaviour
     {
         // Use this for initialization
-        void Start()
+        void Awake()
         {
             // We register the listener on start
-            EventExample.RegisterListener(OnEventFired);
+            EventExample.Listeners += OnEventFired;
+
+            // Here's another way to register the events :
+            // EventExample.RegisterListener(OnEventFired);
         }
 
-        void OnDisable()
+        void OnDestroy()
         {
             // We unregister the listener on disable
-            EventExample.UnregisterListener(OnEventFired);
+            EventExample.Listeners -= OnEventFired;
+
+            // Here's another way to unregister the events :
+            // EventExample.UnregisterListener(OnEventFired);
         }
 
         /// <summary>
