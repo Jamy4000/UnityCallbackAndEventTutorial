@@ -11,19 +11,19 @@ namespace EventCallbacks
         // Use this for initialization
         void Awake()
         {
-            // We register the listener on start
+            // We register the listener on awake using a secured way
             EventExample.Listeners += OnEventFired;
 
-            // Here's another way to register the events :
+            // Here's another way to register the events, less secure :
             // EventExample.RegisterListener(OnEventFired);
         }
 
         void OnDestroy()
         {
-            // We unregister the listener on disable
+            // We unregister the listener on Destroy using a secured way
             EventExample.Listeners -= OnEventFired;
 
-            // Here's another way to unregister the events :
+            // Here's another way to unregister the events, less secure :
             // EventExample.UnregisterListener(OnEventFired);
         }
 

@@ -19,21 +19,22 @@ namespace EventCallbacks
         /// This coroutine just fire a new EventExample with random values every 1.5 seconds.
         /// </summary>
         /// <returns></returns>
-        IEnumerator RaiserExampleCoroutine()
+        private IEnumerator RaiserExampleCoroutine()
         {
-            var vector3Param = new Vector3(Random.Range(0, 100), Random.Range(0, 100), Random.Range(0, 100));
-            var floatParam = Random.Range(0, 100);
+            while (true) 
+            {
+                var vector3Param = new Vector3(Random.Range(0, 100), Random.Range(0, 100), Random.Range(0, 100));
+                var floatParam = Random.Range(0, 100);
 
-            // What you should do : 
-            new EventExample(vector3Param, floatParam);
+                // What you should do : 
+                new EventExample(vector3Param, floatParam);
 
-            // What you shouldn't do : 
-            // var test = new EventExample(vector3Param, floatParam);
-            // test.FireEvent(test);
+                // What you shouldn't do : 
+                // var test = new EventExample(vector3Param, floatParam);
+                // test.FireEvent(test);
 
-            yield return new WaitForSeconds(1.5f);
-
-            StartCoroutine(RaiserExampleCoroutine());
+                yield return new WaitForSeconds(3.0f);
+            }
         }
     }
 }
